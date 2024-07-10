@@ -29,6 +29,17 @@ public class KataOneTest {
         assertEquals("16", kata.fizzBuzz(16));
     }
 
+    @Test
+    public void checkIfNumberNotSet() {
+        final KataOne kata = new KataOne();
+        Exception exception = assertThrows(NumberFormatException.class, () -> {
+            kata.fizzBuzz(null);
+        });
 
+        String expectedMessage = "Number not set";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
 
 }
