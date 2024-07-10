@@ -14,13 +14,13 @@ public class KataOneTest {
     @Test
     public void checkIfNumberMultiplesFive() {
         final KataOne kata = new KataOne();
-        assertEquals("Buzz", kata.fizzBuzz(3));
+        assertEquals("Buzz", kata.fizzBuzz(5));
     }
 
     @Test
     public void checkIfNumberMultiplesFiveAndThree() {
         final KataOne kata = new KataOne();
-        assertEquals("Fizz", kata.fizzBuzz(3));
+        assertEquals("FizzBuzz", kata.fizzBuzz(15));
     }
 
     @Test
