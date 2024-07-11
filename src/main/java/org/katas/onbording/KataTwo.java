@@ -22,20 +22,30 @@ public class KataTwo {
             errors += "Invalid input line";
         }
 
-        final String[] nums = customSep.isEmpty()? numbers.split(sep1 + "|\\" + sep2) : numbers.split("\\"+customSep);
+        final String[] nums = customSep.isEmpty()? numbers.split(sep1 + "|\\" + sep2) : numbers.split(customSep);
 
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == null || nums[i].isBlank() || nums[i].isEmpty()) {
                 continue;
             }
-            final int digit = Integer.parseInt(nums[i]);
-            if (digit < 0) {
-                negativeNumbers += digit + ", ";
+            try {
+                final int digit = Integer.parseInt(nums[i]);
+                if (digit < 0) {
+                    negativeNumbers += digit + ", ";
+                }
+                if (digit > 1000) {
+                    continue;
+                }
+                sum += digit;
+            } catch (NumberFormatException e) {
+                if (nums[i].equals(customSep)) {
+                    continue;
+                } else {
+                    //TODO: support detailed message like “‘|’ expected but ‘,’ found at position 3.”
+                    errors += "Invalid input line";
+                }
             }
-            if (digit > 1000) {
-                continue;
-            }
-            sum += digit;
+
         }
         if (!negativeNumbers.isEmpty() && !negativeNumbers.isBlank()) {
             errors += "Negative number(s) not allowed: " + negativeNumbers;

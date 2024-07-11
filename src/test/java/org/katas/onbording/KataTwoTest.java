@@ -51,7 +51,7 @@ public class KataTwoTest {
     }
 
     @Test
-    public void checkDifferentDelimeters() {
+    public void checkDifferentDelimiters() {
         assertEquals(4, add("//;\n1;3"));
         assertEquals(6, add("//|\n1|2|3"));
         assertEquals(7, add("//sep\n2sep5"));
