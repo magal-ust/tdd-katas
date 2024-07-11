@@ -11,7 +11,7 @@ public class KataTwoTest {
 
     @Test
     public void checkIgnoreBigNumbers() {
-        assertEquals(2, "//;\n2;1001");
+        assertEquals(2, add("//;\n2;1001"));
     }
 
     @Test
@@ -52,9 +52,9 @@ public class KataTwoTest {
 
     @Test
     public void checkDifferentDelimeters() {
-        assertEquals(4, "//;\n1;3");
-        assertEquals(6, "/|\n1|2|3");
-        assertEquals(7, "//sep\n2sep5");
+        assertEquals(4, add("//;\n1;3"));
+        assertEquals(6, add("//|\n1|2|3"));
+        assertEquals(7, add("//sep\n2sep5"));
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             add("//|\n1|2,3");
