@@ -16,13 +16,16 @@ public class KataTwo {
         if (numbers.startsWith("//")) {
             customSep = numbers.split(sep2)[0].replaceAll("//", "");
             numbers = numbers.replaceAll("//"+customSep+sep2,"");
+        } else {
         }
         if (numbers.endsWith(sep1) || numbers.endsWith(sep2) ||
                 (!customSep.isEmpty() && numbers.endsWith(customSep))) {
             errors += "Invalid input line";
         }
 
-        final String[] nums = customSep.isEmpty()? numbers.split(sep1 + "|\\" + sep2) : numbers.split(customSep);
+//        final String[] nums = customSep.isEmpty()? numbers.split(sep1 + "|\\" + sep2) : numbers.split(customSep);
+        final String[] nums = customSep.isEmpty()? numbers.split(sep1 + "|\\" + sep2) : numbers.split(sep1 + "|\\" + sep2 + "|" + customSep) ;
+//        final String[] nums = numbers.split(sep1 + "|\\" + sep2 + "|" + customSep) ;
 
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == null || nums[i].isBlank() || nums[i].isEmpty()) {
@@ -42,13 +45,13 @@ public class KataTwo {
                     continue;
                 } else {
                     //TODO: support detailed message like “‘|’ expected but ‘,’ found at position 3.”
-                    errors += "Invalid input line";
+                    errors += "Detected different delimiters\n";
                 }
             }
 
         }
         if (!negativeNumbers.isEmpty() && !negativeNumbers.isBlank()) {
-            errors += "Negative number(s) not allowed: " + negativeNumbers;
+            errors += "Negative number(s) not allowed: " + negativeNumbers + "\n";
         }
         if (!errors.isEmpty() && !errors.isBlank()) {
             throw new IllegalArgumentException(errors);

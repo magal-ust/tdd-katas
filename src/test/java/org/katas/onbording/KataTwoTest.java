@@ -17,10 +17,10 @@ public class KataTwoTest {
     @Test
     public void checkMultiplyErrors() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            add("//|\n1|2,-3");
+            add("//\\|\n1|2,-3");
         });
 
-        final String expectedMessage = "Negative number(s) not allowed: -3\n’|’ expected but ‘,’ found at position 3";
+        final String expectedMessage = "Detected different delimiters\nNegative number(s) not allowed: -3";
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));
@@ -57,10 +57,10 @@ public class KataTwoTest {
         assertEquals(7, add("//sep\n2sep5"));
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            add("//|\n1|2,3");
+            add("//\\|\n1|2,3");
         });
 
-        final String expectedMessage = "Invalid input line";
+        final String expectedMessage = "Detected different delimiters";
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));
