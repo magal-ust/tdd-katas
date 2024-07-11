@@ -7,7 +7,7 @@ public class KataTwo {
         if (numbers == null || numbers.isEmpty() || numbers.isBlank()) {
             return sum;
         }
-        String[] nums = numbers.split(",");
+        String[] nums = numbers.split(",|\\\n");
         for (int i = 0; i < nums.length; i++) {
             sum += Integer.parseInt(nums[i]);
         }
