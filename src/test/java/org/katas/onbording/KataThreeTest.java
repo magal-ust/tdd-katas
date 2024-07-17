@@ -10,6 +10,18 @@ import static org.katas.onbording.KataThree.validatePassword;
 public class KataThreeTest {
 
     @Test
+    public void checkMultiplyErrors() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            validatePassword("ewBWe#");
+        });
+
+        final String expectedMessage = "Password must be at least 8 characters\nThe password must contain at least 2 numbers";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
     public void checkPAsswordShouldContainTwoNumbers() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             validatePassword("cazBWEdkjslddsa#");
