@@ -3,12 +3,17 @@ package org.katas.onbording;
 
 public class KataThree {
     public static boolean validatePassword(String password) {
+        final StringBuilder errors = new StringBuilder();
         if (password == null || password.length() < 8) {
-            throw  new IllegalArgumentException("Password must be at least 8 characters");
+            errors.append("Password must be at least 8 characters").append("\n");
         }
 
         if (!checkDigits(password)) {
-            throw  new IllegalArgumentException("The password must contain at least 2 numbers");
+            errors.append("The password must contain at least 2 numbers").append("\n");
+        }
+
+        if(!errors.isEmpty()) {
+            throw new IllegalArgumentException(errors.toString());
         }
 
         return true;
