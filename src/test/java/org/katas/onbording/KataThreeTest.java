@@ -10,6 +10,18 @@ import static org.katas.onbording.KataThree.validatePassword;
 public class KataThreeTest {
 
     @Test
+    public void checkValidationOfSpecialCharacters() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            validatePassword("cazBWEgro9azdGDcaJ8i");
+        });
+
+        final String expectedMessage = "Password must contain at least one special character";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
     public void checkContainAtLeastOneCapitalLetter() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             validatePassword("cazbwegro9azdgdcaj8i#");
@@ -59,7 +71,7 @@ public class KataThreeTest {
 
     @Test
     public void checkCorrectPassword() {
-        assertTrue(validatePassword("cazBWEgro9azdGDcaJ8i"));
+        assertTrue(validatePassword("cazBWEgro9azdGDcaJ8i!"));
 
     }
 }
