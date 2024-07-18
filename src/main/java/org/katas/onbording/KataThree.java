@@ -1,6 +1,8 @@
 package org.katas.onbording;
 
 
+import java.util.Locale;
+
 public class KataThree {
     public static boolean validatePassword(String password) {
         final StringBuilder errors = new StringBuilder();
@@ -10,6 +12,10 @@ public class KataThree {
 
         if (!checkDigits(password)) {
             errors.append("The password must contain at least 2 numbers").append("\n");
+        }
+
+        if (!containsUpperCase(password)) {
+            errors.append("Password must contain at least one capital letter").append("\n");
         }
 
         if(!errors.isEmpty()) {
@@ -22,6 +28,10 @@ public class KataThree {
     private static boolean checkDigits(String password) {
         String result = password.replaceAll("\\d", "");
         return password.length() - result.length() >= 2;
+    }
+
+    private static boolean containsUpperCase(String value) {
+        return !value.equals(value.toLowerCase(Locale.ROOT));
     }
 
 }
