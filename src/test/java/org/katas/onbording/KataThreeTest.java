@@ -10,6 +10,18 @@ import static org.katas.onbording.KataThree.validatePassword;
 public class KataThreeTest {
 
     @Test
+    public void checkContainAtLeastOneCapitalLetter() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            validatePassword("cazbwegro9azdgdcaj8i#");
+        });
+
+        final String expectedMessage = "Password must contain at least one capital letter";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
     public void checkMultiplyErrors() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             validatePassword("ewBWe#");
