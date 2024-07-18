@@ -2,6 +2,7 @@ package org.katas.onbording;
 
 
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 public class KataThree {
     public static boolean validatePassword(String password) {
@@ -16,6 +17,10 @@ public class KataThree {
 
         if (!containsUpperCase(password)) {
             errors.append("Password must contain at least one capital letter").append("\n");
+        }
+
+        if (!Pattern.compile ("[!@#$%&*()_+=|<>?{}\\[\\]~-]").matcher(password).find()) {
+            errors.append("Password must contain at least one special character").append("\n");
         }
 
         if(!errors.isEmpty()) {
