@@ -11,6 +11,15 @@ import static org.katas.onbording.KataFour.searchBy;
 public class KataFourTest {
 
     @Test
+    public void checkSearchCaseIntensive() {
+        final List<String> result = searchBy("vA");
+
+        assertFalse(result.isEmpty());
+        assertEquals(result.get(0), "Valencia");
+        assertEquals(result.get(1), "Vancouver");
+    }
+
+    @Test
     public void checkSearchByPrefix() {
         final List<String> result = searchBy("Va");
 
