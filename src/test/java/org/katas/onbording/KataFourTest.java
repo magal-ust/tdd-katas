@@ -11,6 +11,14 @@ import static org.katas.onbording.KataFour.searchBy;
 public class KataFourTest {
 
     @Test
+    public void checkReturnWholeList() {
+        final List<String> result = searchBy("*");
+
+        assertFalse(result.isEmpty());
+        assertEquals(result.size(), 16);
+    }
+
+    @Test
     public void checkSearchByContainsCondition(){
         final List<String> result = searchBy("ape");
 
