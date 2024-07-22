@@ -11,6 +11,15 @@ import static org.katas.onbording.KataFour.searchBy;
 public class KataFourTest {
 
     @Test
+    public void checkSearchByPrefix() {
+        final List<String> result = searchBy("Va");
+
+        assertFalse(result.isEmpty());
+        assertEquals(result.get(0), "Valencia");
+        assertEquals(result.get(1), "Vancouver");
+    }
+
+    @Test
     public void checkIfSearchTextFewerThen2Characters() {
         final List<String> result = searchBy("A");
 
