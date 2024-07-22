@@ -15,7 +15,7 @@ public class KataFour {
         }
 
         Arrays.stream(data).forEach(city -> {
-            if (city.startsWith(query)){
+            if (city.toLowerCase(Locale.ROOT).contains(query.toLowerCase(Locale.ROOT))){
                 result.add(city);
             }
         });
