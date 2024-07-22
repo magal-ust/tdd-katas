@@ -11,6 +11,14 @@ import static org.katas.onbording.KataFour.searchBy;
 public class KataFourTest {
 
     @Test
+    public void checkSearchByContainsCondition(){
+        final List<String> result = searchBy("ape");
+
+        assertFalse(result.isEmpty());
+        assertEquals(result.get(0), "Budapest");
+    }
+
+    @Test
     public void checkSearchCaseIntensive() {
         final List<String> result = searchBy("vA");
 
