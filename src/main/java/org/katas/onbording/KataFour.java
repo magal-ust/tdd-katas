@@ -10,8 +10,11 @@ public class KataFour {
 
     public static List<String> searchBy(String query) {
         final List<String> result = new ArrayList<>();
-        if (query == null || query.length() < 2) {
+        if (query == null || (query.length() < 2) && !query.equals("*")) {
             return result;
+        }
+        if (query.equals("*")) {
+            return Arrays.asList(data);
         }
 
         Arrays.stream(data).forEach(city -> {
