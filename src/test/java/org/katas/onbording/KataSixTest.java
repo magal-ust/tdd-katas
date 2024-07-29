@@ -1,9 +1,8 @@
 package org.katas.onbording;
 
 import org.junit.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.Spy;
+
 
 public class KataSixTest {
 
